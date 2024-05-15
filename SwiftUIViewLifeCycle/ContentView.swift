@@ -17,7 +17,6 @@ struct ContentView: View {
     @State var color: Color = Color.yellow
     
     @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
-
     
     var body: some View {
         NavigationStack {
@@ -38,23 +37,28 @@ struct ContentView: View {
                     Text("Timer: \(timeElapsed) sec")
                         .font(.title)
                         .padding()
-                        .onReceive(timer, perform: { time in
-                            timeElapsed = Int(time.timeIntervalSince(startDate))
-                        })
+                    // STEP 2: Add modifier to update text from timer
+                    /// Your code will be here
+                       
                     
                 }
                 .padding()
             }
-            .onChange(of: timeElapsed, { oldValue, newValue in
-                color = Color(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1))
-            })
+            // STEP 5: Change the color when the timeElapsed change
+            /// Your code will be here
+
+            
             .onAppear {
-                startDate = Date.now
-                timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+                // STEP 4: Restart the timer when appearing this view
+                /// Your code will be here
             }
             .onDisappear {
-                name = "Viona"
-                timer.upstream.connect().cancel()
+                // STEP 1: Change the name into Viona when the view is disappearing
+                /// Your code will be here
+               
+                // STEP 3: Stop the timer when navigate to another page
+                /// Your code will be here
+            
             }
             .sheet(isPresented: $isPresented, content: {
                 ModalView(name: $name)
