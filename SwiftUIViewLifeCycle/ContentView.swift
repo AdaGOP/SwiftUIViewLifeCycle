@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var name: String = "Khoi"
+    // STEP 1: Add @State variable for name
+    var name: String = "Khoi"
     @State var isPresented: Bool = false
     @State var startDate = Date.now
     @State private var timerRunning = true
@@ -28,7 +29,7 @@ struct ContentView: View {
                         .foregroundStyle(.tint)
                     Text("Hello, \(name)!")
                     NavigationLink("Navigate") {
-                        ModalView(name: $name)
+                        ModalView()
                     }
                     Button("Present") {
                         isPresented.toggle()
@@ -37,31 +38,31 @@ struct ContentView: View {
                     Text("Timer: \(timeElapsed) sec")
                         .font(.title)
                         .padding()
-                    // STEP 2: Add modifier to update text from timer
+                    // STEP 4: Add modifier to update text from timer
                     /// Your code will be here
                        
                     
                 }
                 .padding()
             }
-            // STEP 5: Change the color when the timeElapsed change
+            // STEP 7: Change the color when the timeElapsed change
             /// Your code will be here
 
             
             .onAppear {
-                // STEP 4: Restart the timer when appearing this view
+                // STEP 6: Restart the timer when appearing this view
                 /// Your code will be here
             }
             .onDisappear {
-                // STEP 1: Change the name into Viona when the view is disappearing
+                // STEP 3: Change the name into Viona when the view is disappearing
                 /// Your code will be here
                
-                // STEP 3: Stop the timer when navigate to another page
+                // STEP 5: Stop the timer when navigate to another page
                 /// Your code will be here
             
             }
             .sheet(isPresented: $isPresented, content: {
-                ModalView(name: $name)
+                ModalView()
             })
         }
     }

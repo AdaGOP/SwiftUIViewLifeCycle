@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ModalView: View {
-    @Binding var name: String
+    // STEP 2: Add @Binding var here
+    var name: String = "Viona"
     
     var body: some View {
         Text("Halo, \(name)")
@@ -16,5 +17,5 @@ struct ModalView: View {
 }
 
 #Preview {
-    ModalView(name: .constant("Viona"))
+    ModalView()
 }
